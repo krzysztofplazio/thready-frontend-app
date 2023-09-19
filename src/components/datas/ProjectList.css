@@ -1,0 +1,29 @@
+.project-link {
+    display: inline-block;
+  /*   border-radius: 5px; */
+    text-decoration: none;
+    
+    /* Set up the hover */
+    /* If you aren't using autoprefix, remember to prefix the gradient for other browsers */
+    background-image: linear-gradient(rgb(100, 105, 110),rgb(100, 105, 110));
+    background-size: 0 3px, auto;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    transition: all .1s ease-out;
+}
+
+.project-link:hover {
+    /* The following line makes the underline only as wide as the text */
+    /* background-size: calc(100% - 2em) 5px, auto; */
+    background-size: 100% 3px, auto;
+}
+
+.project-edit-link {
+    transition: all .1s ease-out;
+    background-size: 25px;
+    border-radius: 50%;
+}
+
+.project-edit-link:hover {
+    background-color: #efefef;
+}
