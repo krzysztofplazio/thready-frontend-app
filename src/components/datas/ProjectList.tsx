@@ -9,11 +9,11 @@ const dane = [
   { id: 1, name: 'Project Tracker' },
   { id: 2, name: 'JkpChat - new project' },
   { id: 3, name: 'Tegi szmegi project' },
-  { id: 4, name: 'Thready' },
-  { id: 5, name: 'New sync tool info information data sync etc.' },
-  { id: 6, name: 'Very special top secret project' }, 
-  { id: 7, name: 'Niggaapp' },
-  { id: 8, name: 'Facebook API - how to XDDX' },
+  // { id: 4, name: 'Thready' },
+  // { id: 5, name: 'New sync tool info information data sync etc.' },
+  // { id: 6, name: 'Very special top secret project' }, 
+  // { id: 7, name: 'Niggaapp' },
+  // { id: 8, name: 'Facebook API - how to XDDX' },
 ];
 
 // Interfejs reprezentujący pojedynczy element
