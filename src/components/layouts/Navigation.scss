@@ -1,0 +1,24 @@
+.list-item
+{
+    padding-left: 10%;
+    border-left: 4px solid orange;
+    margin-top: 0 !important;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    & > *
+    {
+        margin: 0 5px; 
+    }   
+}
+
+.link
+{
+    &:hover > .list-item
+    {
+        background-color: #404B60;
+        border-left-color: rgb(255, 217, 0);
+    }
+}

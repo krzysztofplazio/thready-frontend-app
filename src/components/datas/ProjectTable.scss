@@ -17,13 +17,3 @@
     /* background-size: calc(100% - 2em) 5px, auto; */
     background-size: 100% 3px, auto;
 }
-
-.project-edit-link {
-    transition: all .1s ease-out;
-    background-size: 25px;
-    border-radius: 50%;
-}
-
-.project-edit-link:hover {
-    background-color: #efefef;
-}

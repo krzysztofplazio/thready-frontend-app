@@ -1,39 +1,38 @@
-import { Box, Switch } from '@chakra-ui/react'
 import MainPage from '../pages/MainPage';
-import './Background.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './Background.scss';
+import { Route, Routes } from 'react-router-dom';
 import ProjectPage from '../pages/ProjectPage';
+import Header from '../layouts/Header';
+import Bar from '../layouts/Bar';
 
 function Background()
 {
     return(
-        <div 
-            style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                minHeight: '100vh',
-            }}
-        >
-            <Box background='white'
-                 minW='50%'
-                 minH='70vh'
-                 color='black' 
-                 borderWidth='2px' 
-                 borderColor='#efefef'
-                 overflow='hidden'
-                 className='bg'
-                 padding='1%'
-            >
-                <BrowserRouter>
-                    <Routes>
-                        <Route path='/' element={<MainPage />}></Route>
-                        <Route path='/projects' element={<MainPage />}></Route>
-                        <Route path='/projects/:id' element={<ProjectPage />}></Route>
-                        <Route path='*' element={<div>404 Not found</div>} />
-                    </Routes>
-                </BrowserRouter>
-            </Box>
+        <div style={{
+            width: '100%',
+            display: 'flex',
+        }}>
+            <Bar />
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                width: '100%',
+            }}>
+                <Header />
+                <div style={{
+                    width: '100%',
+                    height: '100%',
+                }}>
+                    <div className='container'>
+                        <Routes>
+                            <Route path='/' element={<MainPage />}></Route>
+                            <Route path='/projects' element={<MainPage />}></Route>
+                            <Route path='/projects/:id' element={<ProjectPage />}></Route>
+                            <Route path='*' element={<div>404 Not found</div>} />
+                        </Routes>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
