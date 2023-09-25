@@ -5,7 +5,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export function CircleChart({ values, size }: {values: number[], size: string}) {
     const data = {
-    labels: ['New', 'In Progress', 'Closed', 'Completed'],
+    labels: ['nowy', 'In Progress', 'zamknięty', 'Completed'],
     datasets: [
       {
         label: '# of Votes',

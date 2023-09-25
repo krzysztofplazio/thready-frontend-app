@@ -1,16 +1,17 @@
 import { useParams } from "react-router-dom";
 import { Card, CardHeader, CardBody, CardFooter, Box, Stack, StackDivider, Heading, Grid, GridItem } from '@chakra-ui/react'
-import TitleCard from "./TitleCard";
+import TitleCard from "./cards/TitleCard";
 import { CircleChart } from "../datas/CircleChart";
-import ChartCard from "./ChartCard";
+import ChartCard from "./cards/ChartCard";
 import './ProjectPage.scss';
+import TableCard from "./cards/TableCard";
 
 const threads = [
     { 
         id: "1",
         name: "wontek first ;pp",
         status: {
-            name: "new",
+            name: "nowy",
             color: "green"
         },
         dueDate: new Date(),
@@ -19,7 +20,7 @@ const threads = [
         id: "2",
         name: "wontek first ;pp",
         status: {
-            name: "in progress",
+            name: "w trakcie",
             color: "yellow"
         },
         dueDate: new Date(),
@@ -28,7 +29,7 @@ const threads = [
         id: "3",
         name: "wontek first ;pp",
         status: {
-            name: "close",
+            name: "zamknięty",
             color: "blue"
         },
         dueDate: new Date(),
@@ -37,7 +38,7 @@ const threads = [
         id: "4",
         name: "wontek first ;pp",
         status: {
-            name: "close",
+            name: "zamknięty",
             color: "blue"
         },
         dueDate: new Date(),
@@ -46,7 +47,7 @@ const threads = [
         id: "5",
         name: "wontek first ;pp",
         status: {
-            name: "new",
+            name: "nowy",
             color: "green"
         },
         dueDate: new Date(),
@@ -55,7 +56,7 @@ const threads = [
         id: "6",
         name: "wontek first ;pp",
         status: {
-            name: "rejected",
+            name: "odrzucony",
             color: "red"
         },
         dueDate: new Date(),
@@ -82,16 +83,26 @@ const users = [
 ]
 
 function ProjectPage() {
-    const project = { id: 1, name: 'Project Tracker', status: { name: "new", color: "green"} };
+    const project = { id: 1, name: 'Project Tracker', status: { name: "nowy", color: "green"} };
     const id = useParams<{ id: string }>();
     return(
-        <Grid templateRows='repeat(3, 1fr)'
-              templateColumns='repeat(2, 1fr)'>
-            <GridItem w='70%'>
+        <Grid gap={4}
+              templateColumns='repeat(3, 1fr)'
+              templateRows='repeat(1, 1fr)'>
+            <GridItem w='100%' colSpan={2} >
                 <TitleCard text={project.name} id={project.id} />
             </GridItem>
-            <GridItem rowSpan={2} w='30%'>
+            <GridItem rowSpan={2} w='100%'>
                 <ChartCard />
+            </GridItem>
+            <GridItem colSpan={2}>
+                <TableCard text='otwarte wątki' />
+            </GridItem>
+            <GridItem colSpan={2}>
+                <TableCard text='Data zakończenia' />
+            </GridItem>
+            <GridItem rowSpan={2}>
+                <TableCard text='przypisani użytkownicy' />
             </GridItem>
         </Grid>
     )

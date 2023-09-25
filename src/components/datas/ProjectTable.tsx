@@ -13,9 +13,9 @@ import { Link } from 'react-router-dom';
 import { ChevronRightIcon, EditIcon } from '@chakra-ui/icons';
 
 const dane = [
-  { id: 1, name: 'Project Tracker', status: { name: "new", color: "green"} },
-  { id: 2, name: 'JkpChat - new project', status: { name: "in progress", color: "yellow"} },
-  { id: 3, name: 'Tegi szmegi project', status: { name: "closed", color: "blue"} },
+  { id: 1, name: 'Project Tracker', status: { name: "nowy", color: "green"} },
+  { id: 2, name: 'JkpChat - new project', status: { name: "w trakcie", color: "yellow"} },
+  { id: 3, name: 'Tegi szmegi project', status: { name: "zamknięty", color: "blue"} },
   // { id: 4, name: 'Thready' },
   // { id: 5, name: 'New sync tool info information data sync etc.' },
   // { id: 6, name: 'Very special top secret project' }, 
