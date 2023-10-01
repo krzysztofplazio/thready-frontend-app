@@ -89,7 +89,7 @@ function ProjectPage() {
         <Grid gap={4}
               templateColumns='repeat(3, 1fr)'
               templateRows='repeat(1, 1fr)'>
-            <GridItem w='100%' colSpan={2} >
+            <GridItem w='80%' colSpan={2} >
                 <TitleCard text={project.name} id={project.id} />
             </GridItem>
             <GridItem rowSpan={2} w='100%'>

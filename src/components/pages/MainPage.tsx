@@ -3,7 +3,8 @@ import ProjectTable from '../datas/ProjectTable';
 
 function MainPage() {
     return(
-        <div>
+        <div style={{
+        }}>
             <Text fontSize='3xl' 
                  style={{
                     paddingTop: '0',

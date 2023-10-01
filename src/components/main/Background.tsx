@@ -10,29 +10,30 @@ function Background()
     return(
         <div style={{
             width: '100%',
+
+        }}>
+        <Header />
+        <div style={{
+            width: '100%',
             display: 'flex',
+            flexDirection: 'row',
         }}>
             <Bar />
             <div style={{
+                width: '100%',
                 display: 'flex',
                 flexDirection: 'column',
-                width: '100%',
             }}>
-                <Header />
-                <div style={{
-                    width: '100%',
-                    height: '100%',
-                }}>
-                    <div className='container'>
-                        <Routes>
-                            <Route path='/' element={<MainPage />}></Route>
-                            <Route path='/projects' element={<MainPage />}></Route>
-                            <Route path='/projects/:id' element={<ProjectPage />}></Route>
-                            <Route path='*' element={<div>404 Not found</div>} />
-                        </Routes>
-                    </div>
+                <div className='container'>
+                    <Routes>
+                        <Route path='/' element={<MainPage />}></Route>
+                        <Route path='/projects' element={<MainPage />}></Route>
+                        <Route path='/projects/:id' element={<ProjectPage />}></Route>
+                        <Route path='*' element={<div>404 Not found</div>} />
+                    </Routes>
                 </div>
             </div>
+        </div>
         </div>
     );
 }
