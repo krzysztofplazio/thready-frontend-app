@@ -1,0 +1,41 @@
+nav {
+    min-height: 100vh;
+    width: 325px;
+}
+
+.menu-box {
+    background-color: rgb(28, 37, 54);
+    color: rgb(226, 226, 226);
+
+    h3 {
+        font-size: 1.7rem;
+        margin: 0;
+    }
+
+    p {
+        font-size: 0.9rem;
+        padding-left: 1%;
+        margin: 0;
+        color: rgb(226, 226, 226, 0.7);
+    }
+}
+
+.logo {
+    margin: 7%;
+    padding: 6% 7% 7%;
+    background-color: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+}
+
+.divider {
+    background-color: rgb(47, 55, 70);;
+}
+
+.main-menu {
+    .MuiList-root {
+        margin: 5%;
+        .MuiListItem-root {
+            border-radius: 10px;
+        }
+    }
+}
