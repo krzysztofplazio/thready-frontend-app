@@ -1,14 +1,15 @@
 import React from "react";
-import Header from "./Header";
-import Menu from "./Menu";
-import MainBody from "./MainBody";
+
 import './MainLayout.scss';
+import Menu from "../menu/Menu";
+import Header from "../header/Header";
+import MainBody from "../main-body/MainBody";
 
 export default function MainLayout() {
     return(
     <React.Fragment>
         <div className="main-layout">
-            <Menu />
+            <Menu className="menu-box-hidden" />
             <div className="main-body">
                 <Header />
                 <MainBody />

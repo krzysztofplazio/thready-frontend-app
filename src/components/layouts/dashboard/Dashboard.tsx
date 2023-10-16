@@ -6,9 +6,8 @@ import './Dashboard.scss';
 export default function Dashboard() {
     return(
     <React.Fragment>
-        <Box >
+        <Box>
             <Grid container spacing={2}>
-                
             </Grid>
         </Box>     
     </React.Fragment>)

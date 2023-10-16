@@ -5,7 +5,7 @@ nav {
     flex-direction: column;
 }
 
-.menu-box {
+.menu-box, .menu-box-hidden {
     background-color: rgb(28, 37, 54);
     color: rgb(226, 226, 226);
 
@@ -27,6 +27,8 @@ nav {
     padding: 6% 7% 7%;
     background-color: rgba(255, 255, 255, 0.04);
     border-radius: 10px;
+    color: white;
+    text-decoration: none;
 }
 
 .divider {
@@ -56,8 +58,9 @@ nav {
                 padding: 0;
                 padding-left: 7%;
             }
-            .Mui-selected {
+            .active {
                 border-radius: 0.5rem;
+                background-color: rgb(47, 55, 70, 0.5);
                 .MuiSvgIcon-root {
                     color: rgb(62, 176, 13);
                 }
@@ -75,4 +78,13 @@ nav {
     justify-content: center;
     align-items: flex-end;
     margin-bottom: 5%;
+}
+
+@media only screen and (max-width: 700px) {
+    .menu-box-hidden {
+        display: none;
+    }
+    .main-menu {
+        display: block !important;
+    }
 }
