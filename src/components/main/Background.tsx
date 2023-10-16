@@ -25,12 +25,7 @@ function Background()
                 flexDirection: 'column',
             }}>
                 <div className='container'>
-                    <Routes>
-                        <Route path='/' element={<MainPage />}></Route>
-                        <Route path='/projects' element={<MainPage />}></Route>
-                        <Route path='/projects/:id' element={<ProjectPage />}></Route>
-                        <Route path='*' element={<div>404 Not found</div>} />
-                    </Routes>
+                    
                 </div>
             </div>
         </div>
