@@ -10,5 +10,5 @@ export default function Dashboard() {
             <Grid container spacing={2}>
             </Grid>
         </Box>     
-    </React.Fragment>)
+    </React.Fragment>);
 }

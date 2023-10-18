@@ -14,3 +14,8 @@ interface IProjectTitle {
     id: number;
     text: string;
 }
+
+interface ILoginCredentials {
+    username: string;
+    password: string;
+}
