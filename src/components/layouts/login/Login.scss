@@ -1,20 +1,76 @@
 .container {
-    min-width: 100vh;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: rgb(30,33,72);
+    background: radial-gradient(circle, rgba(30,33,72,1) 4%, rgba(238,238,238,1) 70%);
 }
 
 .login-box {
-    padding: 10%;
-    border: 1px solid black;
+    -webkit-box-shadow: 0px 0px 100px 26px rgba(30, 33, 72, 1);
+    -moz-box-shadow: 0px 0px 100px 26px rgba(30, 33, 72, 1);
+    box-shadow: 0px 0px 100px 26px rgba(30, 33, 72, 1);
+    border-radius: 10px;
+    min-width: 340px;
+    min-height: 320px;
+    max-width: 25%;
+    padding: 2% 3%;
+    border: 1px solid rgb(8, 17, 34);
+    background-color: rgb(28, 37, 54);
     display: flex;
     flex-direction: column;
-    * {
-        margin: 2% 0;
+    color: white;
+    .MuiFormControl-root {
+        margin: 5% 0;
+        * {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .MuiInputBase-root::after {
+            border-bottom-color: green;
+        }
+        .Mui-focused {
+            color: green;
+        }
+    }
+    .logo {
+        padding: 10% !important;
+        color: white;
+        padding: 0;
+        margin: 0;
+        background-color: rgba(255, 255, 255, 0.04);
+        border-radius: 10px;
+        text-decoration: none;
+        h3 {
+            font-size: 50px;
+            margin: 0;
+        }
+        p {
+            margin: 0;
+        }
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    .login-button {
+        font-family: 'Gabarito', sans-serif;
+        font-size: 20px;
+        padding: 2%;
+        margin-top: 2%;
+        background-color: green !important;
     }
 }
 
 
+@media only screen and (max-width: 1120px) {
+    .logo {
+        h3 {
+            font-size: 30px !important;
+        }
+    }
+}
 
+@media only screen and (max-width: 1120px) {
+
+}
