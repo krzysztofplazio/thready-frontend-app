@@ -1,15 +1,17 @@
 import { Box, Button, FormControl, IconButton, Input, InputAdornment, InputLabel } from "@mui/material";
 import './Login.scss';
 import React, { useState } from "react";
-import { AccountCircle, Visibility, VisibilityOff } from "@mui/icons-material";
+import { AccountCircle } from "@mui/icons-material";
 import KeyRoundedIcon from '@mui/icons-material/KeyRounded';
 import { authRepo } from "../../../api/authRepo";
+import ErrorCard from "../ErrorCard";
+import { Navigate } from "react-router-dom";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const [exceptionThrowned, setExceptionThrowned] = useState(false);
+  const [error, setError] = useState("");
 
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -30,8 +32,18 @@ export default function Login() {
       password: password,
     }
 
-    const xd = await authRepo.loginUser(credentials);
-    console.log(xd);
+    try {
+      // spinner time
+      await authRepo.loginUser(credentials);
+      // spinner time
+      <Navigate to='/' />
+    } catch (error) {
+      if (error instanceof Error)
+      {
+        setError(error.message);
+        setExceptionThrowned(true);
+      }
+    }
   };
 
   return (
@@ -65,7 +77,7 @@ export default function Login() {
               </InputLabel>
               <Input
                 id="outlined-adornment-password"
-                type={showPassword ? 'text' : 'password'}
+                type="password"
                 startAdornment={
                   <InputAdornment position="start">
                     <KeyRoundedIcon />
@@ -75,11 +87,9 @@ export default function Login() {
                   <InputAdornment position="end">
                     <IconButton
                       aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
                       onMouseDown={handleMouseDownPassword}
                       edge="end"
                     >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
                 }
@@ -87,6 +97,7 @@ export default function Login() {
                 value={password}
               />
             </FormControl>
+            <ErrorCard error={error} isEnabled={exceptionThrowned} />
             <Button className="login-button"
                     variant="contained" 
                     type="submit">Zaloguj się</Button>

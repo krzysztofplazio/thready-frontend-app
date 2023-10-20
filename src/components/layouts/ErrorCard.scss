@@ -1,0 +1,14 @@
+.MuiCard-root {
+    background-color: rgba(0,0,0,0) !important;
+    .MuiCardContent-root {
+        background-color: #ffb7b7;
+        border-radius: 5px;
+        border: 1px solid rgb(141, 27, 27);
+        padding: 6%;
+        margin: 4% 0;
+        .MuiTypography-root {
+            font-family: 'Gabarito', sans-serif;
+            color: rgb(141, 27, 27);
+        }
+    }
+}

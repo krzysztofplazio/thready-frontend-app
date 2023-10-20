@@ -26,8 +26,10 @@
         * {
             color: rgba(255, 255, 255, 0.6);
         }
-        .MuiInputBase-root::after {
-            border-bottom-color: green;
+        .MuiInputBase-root {
+            &::after {
+                border-bottom-color: green;
+            }
         }
         .Mui-focused {
             color: green;
@@ -61,7 +63,6 @@
         background-color: green !important;
     }
 }
-
 
 @media only screen and (max-width: 1120px) {
     .logo {
