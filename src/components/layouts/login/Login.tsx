@@ -5,12 +5,14 @@ import { AccountCircle } from "@mui/icons-material";
 import KeyRoundedIcon from '@mui/icons-material/KeyRounded';
 import { authRepo } from "../../../api/authRepo";
 import ErrorCard from "../ErrorCard";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [exceptionThrowned, setExceptionThrowned] = useState(false);
+  const [user, setUser] = useState<IUser>();
   const [error, setError] = useState("");
 
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -36,7 +38,7 @@ export default function Login() {
       // spinner time
       await authRepo.loginUser(credentials);
       // spinner time
-      <Navigate to='/' />
+      navigate("/");
     } catch (error) {
       if (error instanceof Error)
       {
@@ -48,6 +50,7 @@ export default function Login() {
 
   return (
     <React.Fragment>
+      { sessionStorage.getItem("token") != null ? <Navigate to="/" /> : 
       <div className="container">
         <Box className='login-box'>
           <Box className="logo">
@@ -103,7 +106,7 @@ export default function Login() {
                     type="submit">Zaloguj się</Button>
           </form>
         </Box>
-      </div>
+      </div> }
     </React.Fragment>
   );
 };

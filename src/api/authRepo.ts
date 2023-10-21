@@ -4,8 +4,9 @@ import { Api } from "./api";
 export class AuthRepo extends Api {
     public loginUser = async (credentials: ILoginCredentials) => {
         try {
-            const response = await this.post<string, string>("/api/auth/login", JSON.stringify(credentials));
-            this.setToken(response.data);
+            const response = await this.post<IToken, string>("/api/auth/login", JSON.stringify(credentials));
+            this.setToken(response.data.token);
+            sessionStorage.setItem("token", response.data.token);
         } catch (error)  {
             if (!(error instanceof AxiosError)){
                 throw error;

@@ -19,3 +19,14 @@ interface ILoginCredentials {
     username: string;
     password: string;
 }
+
+interface IToken {
+    token: string;
+}
+
+interface IUser {
+    id: number;
+    firstName: string;
+    lastName: string;
+    username: string;
+}
