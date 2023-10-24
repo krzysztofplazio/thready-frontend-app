@@ -29,4 +29,10 @@ interface IUser {
     firstName: string;
     lastName: string;
     username: string;
+    role: string;
+}
+
+interface IState {
+    user: IUser;
+    setUser: (user: IUser) => void;
 }

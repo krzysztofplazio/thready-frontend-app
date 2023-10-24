@@ -1,6 +1,9 @@
-import { Card, CardContent, Typography } from "@mui/material";
+import Card from "@mui/material/Card";
 import React from "react";
 import './ErrorCard.scss';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
 
 export default function ErrorCard({error, isEnabled}: {error: string, isEnabled: boolean}) {
     return (
@@ -9,6 +12,7 @@ export default function ErrorCard({error, isEnabled}: {error: string, isEnabled:
                 display: isEnabled ? 'block' : 'none',
             }}>
                 <CardContent>
+                    <ErrorOutlineIcon />
                     <Typography variant="body1">
                         {error}
                     </Typography>

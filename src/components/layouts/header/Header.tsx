@@ -12,7 +12,6 @@ import Menu from "../menu/Menu";
 export default function Header() {
     const [isSearchEnabled, setIsSearchEnabled] = useState(false);
     const [isDrawerEnabled, setIsDrawerEnabled] = useState(false);
-    
     return(
         <header>
             <Drawer

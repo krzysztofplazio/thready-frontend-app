@@ -7,8 +7,11 @@ import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import LogoutIcon from '@mui/icons-material/Logout';
 import './Menu.scss';
 import { NavLink } from "react-router-dom";
+import useLogout from "../../../hooks/useLogout";
 
 export default function Menu({ className } : { className?:string }) {
+    const logout = useLogout();
+
     return(
         <nav className={className}>
             <Box className="logo"
@@ -56,8 +59,7 @@ export default function Menu({ className } : { className?:string }) {
                         </ListItemButton>
                     </ListItem>
                     <ListItem disablePadding>
-                        <ListItemButton component={NavLink}  
-                                        to="/logout">
+                        <ListItemButton onClick={logout}>
                             <LogoutIcon fontSize="large" />
                             <ListItemText primary="Wyloguj się" />
                         </ListItemButton>

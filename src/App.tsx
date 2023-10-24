@@ -6,7 +6,7 @@ import './App.css';
 import MainLayout from './components/layouts/main-layout/MainLayout';
 import Login from './components/layouts/login/Login';
 
-function App() {    
+function App() {
   return (
       <BrowserRouter>
         <Routes>

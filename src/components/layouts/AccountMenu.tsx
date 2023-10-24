@@ -11,10 +11,14 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+import useLogout from '../../hooks/useLogout';
+import { useStore } from '../../store';
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const logout = useLogout();
+  const user = useStore(state => state.user);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -33,7 +37,7 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 38, height: 38, backgroundColor: 'green' }}>KP</Avatar>
+            <Avatar sx={{ width: 38, height: 38, backgroundColor: 'green' }}>{`${user.firstName[0]}${user.lastName[0]}`}</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -72,26 +76,25 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem onClick={handleClose}>
-          <Avatar /> Profile
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Avatar /> My account
+        <MenuItem>
+          <Avatar /> {`${user.firstName} ${user.lastName}`}
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleClose}>
+        {user.role === "Admin" ? 
+        <MenuItem>
           <ListItemIcon>
             <PersonAdd fontSize="small" />
           </ListItemIcon>
           Add another account
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
+        </MenuItem> 
+        : <></>}
+        <MenuItem>
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={useLogout()}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

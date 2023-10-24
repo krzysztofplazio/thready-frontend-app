@@ -1,19 +1,23 @@
-import { Box, Button, FormControl, IconButton, Input, InputAdornment, InputLabel } from "@mui/material";
+import { Box, Button, CircularProgress, FormControl, IconButton, Input, InputAdornment, InputLabel } from "@mui/material";
 import './Login.scss';
 import React, { useState } from "react";
 import { AccountCircle } from "@mui/icons-material";
 import KeyRoundedIcon from '@mui/icons-material/KeyRounded';
-import { authRepo } from "../../../api/authRepo";
 import ErrorCard from "../ErrorCard";
 import { Navigate, useNavigate } from "react-router-dom";
+import { getCurrentUser, loginUser } from "../../../api/axios";
+import { AxiosError } from "axios";
+import { useStore } from "../../../store";
 
 export default function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [exceptionThrowned, setExceptionThrowned] = useState(false);
-  const [user, setUser] = useState<IUser>();
+  // const [user, setUser] = useState<IUser>();
+  const [loadingEnabled, setLoadingEnabled] = useState(false);
   const [error, setError] = useState("");
+  const setUser = useStore(state => state.setUser);
 
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -33,18 +37,40 @@ export default function Login() {
       username: username,
       password: password,
     }
-
     try {
-      // spinner time
-      await authRepo.loginUser(credentials);
-      // spinner time
+      if (username == "" || password == "") {
+        setError("Fields have to be filled.");
+        setExceptionThrowned(true);
+        return;
+      }
+
+      setLoadingEnabled(true);
+      await loginUser(credentials);
+
+      setUser(await getCurrentUser());
+      setLoadingEnabled(false);
+
       navigate("/");
     } catch (error) {
-      if (error instanceof Error)
-      {
-        setError(error.message);
-        setExceptionThrowned(true);
+      if (!(error instanceof AxiosError)){
+          throw error;
       }
+
+      switch (error.response?.status) {
+          case 404:
+            setError(`User ${credentials.username} have no access to application.`);
+            break;
+          case 400:
+            setError("Bad login or password");
+            break;
+          default: 
+            setError("Server error");
+            break;
+      }
+      setExceptionThrowned(true);
+    }
+    finally {
+      setLoadingEnabled(false);
     }
   };
 
@@ -58,7 +84,7 @@ export default function Login() {
                 <p>Zaloguj się do JKP Thready®</p>
             </Box>
           <form onSubmit={handleSubmit}>
-            <FormControl variant="standard">
+            <FormControl variant="standard" color="success">
               <InputLabel htmlFor="login">
                 Login
               </InputLabel>
@@ -74,7 +100,7 @@ export default function Login() {
                   onChange={handleLoginInputChange}
                 />
             </FormControl>
-            <FormControl variant="standard">
+            <FormControl variant="standard" color="success">
               <InputLabel htmlFor="password">
                 Hasło
               </InputLabel>
@@ -101,9 +127,11 @@ export default function Login() {
               />
             </FormControl>
             <ErrorCard error={error} isEnabled={exceptionThrowned} />
+            {!loadingEnabled ? 
             <Button className="login-button"
                     variant="contained" 
-                    type="submit">Zaloguj się</Button>
+                    type="submit">Zaloguj się</Button> :
+            <CircularProgress color="secondary" /> }
           </form>
         </Box>
       </div> }
