@@ -20,8 +20,9 @@ interface ILoginCredentials {
     password: string;
 }
 
-interface IToken {
-    token: string;
+interface IAuthenticateResult {
+    accessToken: string;
+    refreshToken: string;
 }
 
 interface IUser {

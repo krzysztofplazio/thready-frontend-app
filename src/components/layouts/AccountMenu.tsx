@@ -12,19 +12,10 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import useLogout from '../../hooks/useLogout';
-import { useStore } from '../../store';
+import useAccountMenu from '../../hooks/useAccountMenu';
 
 export default function AccountMenu() {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const logout = useLogout();
-  const user = useStore(state => state.user);
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const { open, handleClick, handleClose, anchorEl } = useAccountMenu();
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -37,7 +28,8 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 38, height: 38, backgroundColor: 'green' }}>{`${user.firstName[0]}${user.lastName[0]}`}</Avatar>
+            {/* <Avatar sx={{ width: 38, height: 38, backgroundColor: 'green' }}>{`${user?.firstName[0]}${user?.lastName[0]}`}</Avatar> */}
+            <Avatar sx={{ width: 38, height: 38, backgroundColor: 'green' }}>KP</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -77,17 +69,18 @@ export default function AccountMenu() {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem>
-          <Avatar /> {`${user.firstName} ${user.lastName}`}
+          {/* <Avatar /> {`${user.firstName} ${user.lastName}`} */}
+          <Avatar /> KP
         </MenuItem>
         <Divider />
-        {user.role === "Admin" ? 
+        {/* {user.role === "Admin" ?  */}
         <MenuItem>
           <ListItemIcon>
             <PersonAdd fontSize="small" />
           </ListItemIcon>
           Add another account
         </MenuItem> 
-        : <></>}
+        {/* : <></>} */}
         <MenuItem>
           <ListItemIcon>
             <Settings fontSize="small" />

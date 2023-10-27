@@ -1,27 +1,11 @@
 import axios from "axios";
+import config from "./axios.config";
 
-// export class Axios {
-//    public interceptors: {
-//        request: AxiosInterceptorManager<AxiosRequestConfig>;
-//        response: AxiosInterceptorManager<AxiosResponse>;
-//    } | undefined;
-//     constructor(config: AxiosRequestConfig) {
-//         return axios.create(config);
-//     }
-// }
-
-const api = axios.create({
-    baseURL: "http://localhost:5007/",
-    headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-    },
-});
+const api = axios.create(config);
 
 api.interceptors.request.use(
     (config) => {
-        const token = sessionStorage.getItem("token");
-        console.log("token", token);
+        const token = localStorage.getItem("token");
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
         }
@@ -33,9 +17,26 @@ api.interceptors.request.use(
     }
 )
 
+// Response interceptor for API calls
+api.interceptors.response.use(
+    (response) => {
+        return response
+    }, async function (error) {
+        const originalRequest = error.config;
+        if (error.response.status === 401 && !originalRequest._retry) {
+            originalRequest._retry = true;
+            return api(originalRequest);
+        }
+
+        return Promise.reject(error);
+    });
+
 export const loginUser = async (credentials: ILoginCredentials) => {
-    const response = await api.post<IToken>("/api/auth/login", JSON.stringify(credentials));
-    sessionStorage.setItem("token", response.data.token);
+    await api.post<IAuthenticateResult>("/api/auth/login", JSON.stringify(credentials));
+}
+
+export const logoutUser = async () => {
+    await api.delete<IAuthenticateResult>("/api/auth/logout");
 }
 
 export const getCurrentUser = async () => {
@@ -43,8 +44,8 @@ export const getCurrentUser = async () => {
     return response.data;
 }
 
-export const logoutUser = async () => {
-    await api.delete("/api/auth/logout");
-}
+// const refreshAccessToken = async (tokens: IAuthenticateResult) => {
+//     await api.post<IAuthenticateResult>("/api/auth/refresh", JSON.stringify(tokens));
+// }
 
 export default api;

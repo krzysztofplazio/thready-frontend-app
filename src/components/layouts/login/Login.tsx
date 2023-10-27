@@ -76,7 +76,7 @@ export default function Login() {
 
   return (
     <React.Fragment>
-      { sessionStorage.getItem("token") != null ? <Navigate to="/" /> : 
+      {/* { localStorage.getItem("token") != null ? <Navigate to="/" /> :  */}
       <div className="container">
         <Box className='login-box'>
           <Box className="logo">
@@ -134,7 +134,7 @@ export default function Login() {
             <CircularProgress color="secondary" /> }
           </form>
         </Box>
-      </div> }
+      </div> 
     </React.Fragment>
   );
 };

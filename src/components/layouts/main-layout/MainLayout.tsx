@@ -9,13 +9,13 @@ import { Navigate } from "react-router-dom";
 export default function MainLayout() {
     return(
     <React.Fragment>
-        { sessionStorage.getItem("token") == null ? <Navigate to="/login" /> :
+        {/* { localStorage.getItem("token") == null ? <Navigate to="/login" /> : */}
         <div className="main-layout">
             <Menu className="menu-box-hidden" />
             <div className="main-body">
                 <Header />
                 <MainBody />
             </div>
-        </div> }
+        </div> 
     </React.Fragment>);
 }

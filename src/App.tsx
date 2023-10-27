@@ -1,10 +1,8 @@
-
-// 1. import `ChakraProvider` component
-// import Background from './components/main/Background';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
 import MainLayout from './components/layouts/main-layout/MainLayout';
 import Login from './components/layouts/login/Login';
+
+import './App.css';
 
 function App() {
   return (
