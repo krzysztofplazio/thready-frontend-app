@@ -13,13 +13,15 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import useLogout from '../../hooks/useLogout';
 import useAccountMenu from '../../hooks/useAccountMenu';
+import Skeleton from '@mui/material/Skeleton';
 
-export default function AccountMenu() {
+export default function AccountMenu({ user } : { user :IUser | undefined }) {
+  // const [user, setUser] = useState<IUser | undefined>();
+
   const { open, handleClick, handleClose, anchorEl } = useAccountMenu();
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-        <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
             size="small"
@@ -28,10 +30,16 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            {/* <Avatar sx={{ width: 38, height: 38, backgroundColor: 'green' }}>{`${user?.firstName[0]}${user?.lastName[0]}`}</Avatar> */}
-            <Avatar sx={{ width: 38, height: 38, backgroundColor: 'green' }}>KP</Avatar>
+            {user !== undefined 
+              ? <Avatar sx={{ width: 38, height: 38, backgroundColor: 'green', fontSize: '17px', letterSpacing: 1.3, textAlign: 'center' }}>{`${user.firstName[0]}${user.lastName[0]}`}</Avatar>
+              : <Skeleton
+                    sx={{ bgcolor: 'green' }}
+                    variant="circular"
+                    width={38}
+                    height={38}
+                  />
+            }
           </IconButton>
-        </Tooltip>
       </Box>
       <Menu
         anchorEl={anchorEl}
@@ -70,7 +78,6 @@ export default function AccountMenu() {
       >
         <MenuItem>
           {/* <Avatar /> {`${user.firstName} ${user.lastName}`} */}
-          <Avatar /> KP
         </MenuItem>
         <Divider />
         {/* {user.role === "Admin" ?  */}

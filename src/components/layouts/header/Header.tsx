@@ -4,14 +4,29 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import IconButton from '@mui/material/IconButton';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AccountMenu from "../AccountMenu";
 import Menu from "../menu/Menu";
+import { getCurrentUser } from "../../../api/axios";
 
 
 export default function Header() {
     const [isSearchEnabled, setIsSearchEnabled] = useState(false);
     const [isDrawerEnabled, setIsDrawerEnabled] = useState(false);
+    const [user, setUser] = useState<IUser | undefined>();
+
+    useEffect(() => {
+        async function fetchCurrentUser() {
+            try {
+                setUser(await getCurrentUser());
+            } catch (error) {
+                console.error('Error fetching current user:', error);
+            }
+        }
+
+        fetchCurrentUser();
+    }, []);
+    
     return(
         <header>
             <Drawer
@@ -35,7 +50,7 @@ export default function Header() {
                     <IconButton>
                         <NotificationsIcon fontSize="medium" />
                     </IconButton>
-                    <AccountMenu />
+                    <AccountMenu user={user} />
                 </div>
             </Box>
         </header>

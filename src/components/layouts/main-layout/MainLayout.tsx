@@ -4,7 +4,6 @@ import './MainLayout.scss';
 import Menu from "../menu/Menu";
 import Header from "../header/Header";
 import MainBody from "../main-body/MainBody";
-import { Navigate } from "react-router-dom";
 
 export default function MainLayout() {
     return(

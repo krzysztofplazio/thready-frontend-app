@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 export default function ErrorCard({error, isEnabled}: {error: string, isEnabled: boolean}) {
     return (
         <React.Fragment>
-            <Card sx={{
+            <Card classes={ 'error-card' } sx={{
                 display: isEnabled ? 'block' : 'none',
             }}>
                 <CardContent>

@@ -37,3 +37,19 @@ interface IState {
     user: IUser;
     setUser: (user: IUser) => void;
 }
+
+type PagedItems<T> = {
+    page: number,
+    pageSize: number,
+    totalCount: number,
+    totalPages: number,
+    items: T[],
+}
+
+type Project = {
+    id: number,
+    title: string,
+    description: string,
+    dueDate: Date,
+    creator: string,
+}

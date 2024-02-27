@@ -44,6 +44,10 @@ export const getCurrentUser = async () => {
     return response.data;
 }
 
+export const getProjectList = async () => {
+    const response = await api.get<PagedItems<Project>>("/api/projects");
+    return response.data;
+}
 // const refreshAccessToken = async (tokens: IAuthenticateResult) => {
 //     await api.post<IAuthenticateResult>("/api/auth/refresh", JSON.stringify(tokens));
 // }
