@@ -1,11 +1,10 @@
 import { Box, Typography } from "@mui/material";
-import ArticleIcon from '@mui/icons-material/Article';
 
 export default function ProjectTile({ project } : { project: Project }) {
     return (
     <>
         <Box sx={{
-            border: '1px solid rgba(122, 122, 122, 0.8)',
+            border: '1px solid rgba(122, 122, 122, 0.3)',
             borderRadius: '5px',
             '*': {
                 padding: 1,
@@ -19,8 +18,8 @@ export default function ProjectTile({ project } : { project: Project }) {
             <Box sx={{
                 width: 36,
                 height: 36,
-                backgroundColor: 'green',
-                border: 'darkgreen 1px solid',
+                backgroundColor: '#53b07a',
+                border: '#53b57c 1px solid',
                 borderTopLeftRadius: '2px',
                 borderBottomRightRadius: '2px',
                 color: 'white',
@@ -40,10 +39,10 @@ export default function ProjectTile({ project } : { project: Project }) {
                     }}>
                         {project.title}
                     </Typography>
-                    <Typography variant="body1">
+                    <Typography variant="body1" sx={{ color: '#777' }}>
                         {project.description}
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography variant="body2" sx={{ color: '#003' }}>
                         Autor: {project.creator}
                     </Typography>
                 </div>
